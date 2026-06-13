@@ -118,10 +118,53 @@
 
     /* ─── HERO ───────────────────────────────────────────── */
     .hero {
-      padding: clamp(3rem, 8vw, 7rem) var(--pad) clamp(3rem, 6vw, 5rem);
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+      background-size: cover;
+      background-position: right center;
+      background-repeat: no-repeat;
+    }
+    /* gradient overlay — dark left (text), fades right (reveals figure) */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(7,7,7,1)    0%,
+        rgba(7,7,7,0.96) 35%,
+        rgba(7,7,7,0.55) 65%,
+        rgba(7,7,7,0.15) 100%
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+    /* darken top/bottom edges for polish */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(7,7,7,0.4) 0%,
+        transparent 20%,
+        transparent 80%,
+        rgba(7,7,7,0.6) 100%
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: clamp(4rem, 10vw, 8rem) var(--pad) clamp(4rem, 8vw, 7rem);
       max-width: var(--max-w);
       margin: 0 auto;
-      border-bottom: 1px solid var(--border);
+      min-height: 75vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .hero-eyebrow {
       font-size: 0.7rem;
@@ -194,6 +237,18 @@
       font-weight: 500;
       letter-spacing: 0.15em;
       color: var(--muted);
+    }
+
+    /* ─── MANIFESTO FACE IMAGE ───────────────────────────── */
+    .manifesto-face-img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      margin-bottom: 1.2rem;
+      filter: contrast(1.05) saturate(0.85);
+      border: 1px solid var(--border);
     }
 
     /* ─── FEATURED VIDEO ─────────────────────────────────── */
@@ -574,6 +629,62 @@
       flex-shrink: 0;
     }
 
+    /* ─── PHOTO GALLERY ─────────────────────────────────── */
+    .photo-gallery {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .photo-gallery-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: clamp(3rem, 6vw, 5rem) var(--pad);
+    }
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 2.5rem;
+    }
+    .photo-item {
+      overflow: hidden;
+      position: relative;
+      background: var(--surface);
+    }
+    .photo-item.featured {
+      grid-column: span 2;
+    }
+    .photo-item img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 0.5s ease;
+      filter: contrast(1.02) saturate(0.88);
+    }
+    .photo-item.featured img {
+      aspect-ratio: 16 / 9;
+    }
+    .photo-item:hover img {
+      transform: scale(1.04);
+    }
+    .photo-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem 1rem 0.8rem;
+      background: linear-gradient(transparent, rgba(7,7,7,0.88));
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(240,237,230,0.75);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    .photo-item:hover .photo-caption { opacity: 1; }
+
     /* ─── RESPONSIVE ─────────────────────────────────────── */
     @media (max-width: 700px) {
       .nav-links { display: none; }
@@ -582,6 +693,8 @@
       .manifesto-inner { grid-template-columns: 1fr; gap: 2rem; }
       .manifesto-label { position: static; }
       .promise-inner { grid-template-columns: 1fr; }
+      .photo-grid { grid-template-columns: 1fr 1fr; }
+      .photo-item.featured { grid-column: span 2; }
     }
 
   </style>
@@ -600,6 +713,7 @@
     <ul class="nav-links">
       <li><a href="#videos">Videos</a></li>
       <li><a href="#dispatches">Dispatches</a></li>
+      <li><a href="#photos">Photos</a></li>
       <li><a href="#about">About</a></li>
     </ul>
     <div class="nav-social" id="nav-social"></div>
@@ -612,7 +726,7 @@
 <!-- ░░░ MANIFESTO ░░░ -->
 <section class="manifesto" id="about-manifesto">
   <div class="manifesto-inner">
-    <div class="manifesto-label">WHO<span>IS</span>THIS<span>GUY</span></div>
+    <div class="manifesto-label"><div id="manifesto-face"></div>WHO<span>IS</span>THIS<span>GUY</span></div>
     <div class="manifesto-body" id="manifesto-body"></div>
   </div>
 </section>
@@ -676,6 +790,17 @@
   </div>
 </section>
 
+<!-- ░░░ PHOTO GALLERY ░░░ -->
+<section class="photo-gallery" id="photos">
+  <div class="photo-gallery-inner">
+    <div class="section-label">
+      <h2>THE MAN</h2>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="photo-grid" id="photo-grid"></div>
+  </div>
+</section>
+
 <!-- ░░░ FOOTER ░░░ -->
 <footer>
   <div class="footer-inner">
@@ -697,6 +822,7 @@ const CONTENT = {
 
   // ── HERO ────────────────────────────────────────────────────
   hero: {
+    bgImage:  "./bastard-bg.png",
     eyebrow:  "Est. 2026 · Coventry, England",
     line1:    "THE WAY",
     line2:    "OF THE",
@@ -732,6 +858,7 @@ const CONTENT = {
 
   // ── MANIFESTO ───────────────────────────────────────────────
   manifesto: {
+    faceImage: "./bastard-face.png",
     pullQuote: "Fine at running. Insufferable about it.",
     paragraphs: [
       "Somewhere in the English Midlands, a man got off his sofa and started running. Nobody asked him to. Nobody is particularly impressed or cares. <strong>He does it anyway, despite all the haters.</strong> (not to mention the deep state!!).",
@@ -779,6 +906,15 @@ const CONTENT = {
     ],
   },
 
+  // ── PHOTOS ──────────────────────────────────────────────────
+  photos: [
+    { src: "./1.png", caption: "Coventry. Cold. Hands on hips.", featured: true },
+    { src: "./2.png", caption: "The face of mild confidence.", featured: false },
+    { src: "./3.png", caption: "What", featured: false },
+    { src: "./4.png", caption: "You", featured: false },
+    { src: "./5.png", caption: "Living the fine life", featured: false },
+  ],
+
   // ── SOCIAL LINKS ────────────────────────────────────────────
   social: {
     twitter:   "https://twitter.com/bastardrunner",
@@ -816,14 +952,20 @@ function buildSocialLinks(container) {
 
 function buildHero() {
   const h = CONTENT.hero;
-  document.getElementById('hero-section').innerHTML = `
-    <p class="hero-eyebrow">${h.eyebrow}</p>
-    <h1 class="hero-title">${h.line1}<br>${h.line2}<br><em>${h.line3}</em></h1>
-    <p class="hero-sub">${h.sub}</p>
-    <a href="#videos" class="hero-cta">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-      ${h.btnText}
-    </a>`;
+  const section = document.getElementById('hero-section');
+  if (h.bgImage) {
+    section.style.backgroundImage = `url('${h.bgImage}')`;
+  }
+  section.innerHTML = `
+    <div class="hero-content">
+      <p class="hero-eyebrow">${h.eyebrow}</p>
+      <h1 class="hero-title">${h.line1}<br>${h.line2}<br><em>${h.line3}</em></h1>
+      <p class="hero-sub">${h.sub}</p>
+      <a href="#videos" class="hero-cta">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        ${h.btnText}
+      </a>
+    </div>`;
 }
 
 function buildTicker() {
@@ -920,7 +1062,16 @@ function buildFooter() {
 }
 
 function buildManifesto() {
-  const { paragraphs, pullQuote } = CONTENT.manifesto;
+  const { paragraphs, pullQuote, faceImage } = CONTENT.manifesto;
+  // inject face image if provided
+  const faceEl = document.getElementById('manifesto-face');
+  if (faceEl && faceImage) {
+    const img = document.createElement('img');
+    img.src = faceImage;
+    img.alt = 'The Bastard Runner';
+    img.className = 'manifesto-face-img';
+    faceEl.appendChild(img);
+  }
   const el = document.getElementById('manifesto-body');
   paragraphs.forEach((p, i) => {
     if (i === 1) {
@@ -962,6 +1113,20 @@ function buildPromise() {
 }
 
 
+function buildPhotos() {
+  const photos = CONTENT.photos;
+  if (!photos || photos.length === 0) return;
+  const grid = document.getElementById('photo-grid');
+  photos.forEach(p => {
+    const item = document.createElement('div');
+    item.className = 'photo-item' + (p.featured ? ' featured' : '');
+    item.innerHTML = `
+      <img src="${p.src}" alt="${p.caption || 'Bastard Runner'}" loading="lazy">
+      ${p.caption ? `<div class="photo-caption">${p.caption}</div>` : ''}`;
+    grid.appendChild(item);
+  });
+}
+
 buildTicker();
 buildHero();
 buildManifesto();
@@ -971,6 +1136,7 @@ buildFeatured();
 buildArchive();
 buildDispatches();
 buildAbout();
+buildPhotos();
 buildSocial();
 buildFooter();
 
