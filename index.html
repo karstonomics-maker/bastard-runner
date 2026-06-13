@@ -76,7 +76,7 @@
     nav {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-nt: space-between;
       padding: 1.5rem var(--pad);
       max-width: var(--max-w);
       margin: 0 auto;
@@ -225,7 +225,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-nt: center;
       gap: 1rem;
       color: var(--muted);
       font-size: 0.85rem;
@@ -288,7 +288,7 @@
       inset: 0;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-nt: center;
       color: var(--border);
     }
     .video-card-embed .placeholder svg { width: 36px; height: 36px; fill: currentColor; }
@@ -401,7 +401,7 @@
       margin: 0 auto;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-nt: space-between;
       flex-wrap: wrap;
       gap: 1.5rem;
     }
@@ -714,18 +714,34 @@ const CONTENT = {
   ],
 
   // ── VIDEOS ──────────────────────────────────────────────────
+  // First video is featured. To add: paste the YouTube video ID (after ?v= in the URL).
   videos: [
-    { id: "", title: "Episode 1: It Seemed Like a Good Idea", description: "In which a man leaves his house at 6am to run somewhere he didn't need to go.", episode: "EP. 01" },
-    { id: "", title: "Episode 2: The Aftermath", description: "Spoiler: everything hurts.", episode: "EP. 02" },
-    { id: "", title: "Episode 3: The Long Run", description: "18 miles. One gel. Zero dignity.", episode: "EP. 03" },
+    {
+      id: "",
+      title: "Episode 1: It Seemed Like a Good Idea",
+      description: "In which a man leaves his house at 6am to run somewhere he didn't need to go.",
+      episode: "EP. 01",
+    },
+    {
+      id: "",
+      title: "Episode 2: The Aftermath",
+      description: "Spoiler: everything hurts.",
+      episode: "EP. 02",
+    },
+    {
+      id: "",
+      title: "Episode 3: The Long Run",
+      description: "18 miles. One gel. Zero dignity.",
+      episode: "EP. 03",
+    },
   ],
 
   // ── DISPATCHES ──────────────────────────────────────────────
   dispatches: [
     { date: "Jun 2026", text: "Did a 10k. Felt <strong>transcendent</strong> for about 400 metres, then felt the usual way. I scored myself 65% and added it to my spreadsheet. So actually it was more like 6.5km." },
-    { date: "May 2026", text: "Signed up for Brighton marathon. Paid a lot of money that cannot be refunded. <strong>Classic.</strong>" },
+    { date: "May 2026", text: "Signed up for a marathon Brighton. Paid a lot of money that cannot be refunded <strong>Classic.</strong>" },
     { date: "Apr 2026", text: "Spent it telling everyone how they can be a better runner but did no running myself." },
-    { date: "Mar 2026", text: "Ran 5km in the rain. Sent loads of pictures on social media and got insecure and upset because nobody liked my pictures or gave any encouraging remarks. Fragile ego broken. Drink heavily to make up for it. I'm still a legend. <strong>It's all the others that are the problem.</strong>" },
+    { date: "Mar 2026", text: "Ran 5km in the rain. Sent loads of pictures on social media and got insecuer and upset because nobody liked my pictures or gave any encouraging remarked. Fragile ego broken. Drink heavily to make up for it.  I'm still a legend. <strong>It's all the others that are the problem.</strong>" },
   ],
 
   // ── MANIFESTO ───────────────────────────────────────────────
@@ -733,33 +749,63 @@ const CONTENT = {
     pullQuote: "Fine at running. Insufferable about it.",
     paragraphs: [
       "Somewhere in the English Midlands, a man got off his sofa and started running. Nobody asked him to. Nobody is particularly impressed or cares. <strong>He does it anyway.</strong>",
-      "Bastard Runner is the ongoing documentation of one person's personal race, turning running into a philosophy that will also solve all of the world's problems by being smug about running. <em>Feed the world by running with me.</em>",
-      "I'm not an elite athlete, I'm not a coach, I hold no qualifications in fitness, nutrition, or sports science. I make a lot of shit up. But what I do have that you don't is <strong>unmovable confidence against reality</strong>. Within a few weeks you'll be lecturing others on as much bullshit as I am. It's the ingredient you need to be the bastard that you know you are.",
-      "This is his channel, but it's also yours. Congratulations, enjoy, make yourself at home. I dare you to watch the videos on how a true and deeply humble man succeeds. One day you can be me. I mean maybe, it'll be hard, you may never reach my level. You might die trying, but that's understandable. <strong>I'm pretty amazing after all.</strong>",
+      "Bastard Runner is the ongoing documentation of one person's personal race, turning running into a philosophy that will also solve all of the worlds problems by being smug about running. <em>feed the world by running with me</em>.",
+      "I'm not an elite athlete, I'm not a coach, I hold no qualifications in fitness, nutrition, or sports science. I make a lot of shit up.  But what I do have that you don't is <strong>unmovable confident againsts reality</strong>, within a few weeks you'll be lecturing others on as much bullshit as I am. It's the ingredient you need to be the bastard that you know you are.",
+      "This is his channel, but it's also yours. Congratulations, enjoy, make yourself at home.  I dare you to watch the videos on how a true and deeply humble man succeeds. One day you can be me. I mean maybe, it'll be hard, you may never reach my level.  You might die trying, but that's understandable. <strong>I'm pretty amazing afterall.</strong>",
     ],
   },
 
   // ── CREDENTIALS ─────────────────────────────────────────────
   credentials: [
-    { icon: "🏃", title: "HAS COMPLETED A HALF MARATHON", desc: "At least 3 times about 15 years ago. Bath, Bristol and Cardiff. I still wear the T-shirts that no longer fit me to prove it.", caveat: "* I walked a bit." },
-    { icon: "⏰", title: "AWAKE BEFORE 6AM EVERY DAY", desc: "It's important to prove you are a true champion by being awake early morning. Whilst those pathetic others are sleeping you are just getting on with it.", caveat: "* I stayed up until 3am, then at 6am I pressed snooze 20 times then finally woke up at midday." },
-    { icon: "📊", title: "HAS A TRAINING PLAN", desc: "A real one. I have graphs and spreadsheets and everything. It's really detailed. I've added macros and conditional formatting and have different tabs for mood switches. It took me ages.", caveat: "* It takes about an hour to update so I don't bother." },
-    { icon: "🥗", title: "UNDERSTANDS NUTRITION", desc: "I eat nothing for hours and then at 4pm if I don't drink any water I weigh 3 pounds less.", caveat: "* I usually cave in and eat fried chicken all evening." },
-    { icon: "🎽", title: "OWNS TECHNICAL CLOTHING", desc: "I spent an enormous amount of money on substandard clothing because some fit blonde from the USA was advertising it.", caveat: "* It doesn't even fit me." },
-    { icon: "📍", title: "BASED IN MIDLANDS", desc: "There are a few hills and a lot of places you can get stabbed so there is that added incentive to run faster.", caveat: "* There aren't actually many hills." },
+    {
+      icon: "🏃",
+      title: "HAS COMPLETED A HALF MARATHON",
+      desc: "At least 3 times about 15 years ago. Bath, Bristol and Cardiff.  I still wear the T-shirts that no longer fits me to prove it.",
+      caveat: "* I walked a bit.",
+    },
+    {
+      icon: "⏰",
+      title: "AWAKE BEFORE 6AM EVERY DAY",
+      desc: "It's important to prove you are true champrion by being awake early morning. Whilst those pathetic others are sleeping you are just getting on with it.",
+      caveat: "* I stayed up to until 3am, then at 6am I pressed snooze 20 times then finally woke up at midday.",
+    },
+    {
+      icon: "📊",
+      title: "HAS A TRAINING PLAN",
+      desc: "A real one. I have graphs and spreadsheets and everything.  It's really detailed. I've added marcos and conditional formatting and have different tabs for mood switches etc. It took me ages!!",
+      caveat: "* It takes about an hour to update so I don't bother.",
+    },
+    {
+      icon: "🥗",
+      title: "UNDERSTANDS NUTRITION",
+      desc: "I eat nothing for hours and then at 4pm and if I don't drink any water I weight 3 pounds less.",
+      caveat: "* I usually cave in and each friend chicken all evening.",
+    },
+    {
+      icon: "🎽",
+      title: "OWNS TECHNICAL CLOTHING",
+      desc: "I spent an enormous amount of money on substandard clothing because some fit blonde from the USA was adverting it.",
+      caveat: "* It doesn't even fit me.",
+    },
+    {
+      icon: "📍",
+      title: "BASED IN MIDLANDS",
+      desc: "There are a few hills and a lot of places you can get stabbed so there is that added incentive to run faster.",
+      caveat: "* There isn't actually many hills",
+    },
   ],
 
   // ── PROMISE ─────────────────────────────────────────────────
   promise: {
     title: "ONE DAY, WITH ENOUGH EFFORT, YOU MIGHT JUST BE ONLY SLIGHTLY WORSE THAN ME",
     steps: [
-      { num: "01", text: "Go to one of those running shops where some 17 year old expert will film your run and sell you a £300 pair of trainers. You will buy 2 pairs." },
-      { num: "02", text: "Download a training app. Share all your substandard runs with everyone you know until they stop talking to you. Feel like you've already achieved something then head to the pub." },
+      { num: "01", text: "Go to one of those running shots where some 17 year old expert will film your run and sell you a £300 pair of trainers.  You will buy 2 pairs." },
+      { num: "02", text: "Download a training app. Share all your shite substandard runs with everyone you know until they stop talking to you.  Feel like you've already achieved something then head to the pub." },
       { num: "03", text: "Go for a run then stop as soon as you get out of breath." },
       { num: "04", text: "Repeat for several months then weigh yourself and wonder why you've gained half a stone." },
       { num: "05", text: "Enter a race you are not ready for. Get injured but keep going anyway so you can't run for another 6 months. Get fatter." },
     ],
-    caveat: "I can't guarantee results. This is an alternative fitness programme. Don't trust the pro trainers who clearly work for the deep state. The only state you need is the bastard state.",
+    caveat: "I can't gaurantee results. This is an alternative fitness programme. Don't trust the pro trainers who clearly work for the deep state.  The only state you need is the bastard state.",
   },
 
   // ── ABOUT ───────────────────────────────────────────────────
@@ -770,10 +816,10 @@ const CONTENT = {
       "Based in Coventry. Targeting Brighton. Chronically underprepared.",
     ],
     stats: [
-      { num: "9.754", unit: "KM",  label: "Logged (allegedly)" },
-      { num: "4am",   unit: "",    label: "Earliest alarm set" },
-      { num: "11am",  unit: "",    label: "Actual wake up time" },
-      { num: "2",     unit: "",    label: "Medals (thanks for turning up)" },
+      { num: "9.754km", unit: "KM", label: "Logged (allegedly)" },
+      { num: "4am", unit: "", label: "Earliest alarm set" },
+      { num: "11am", unit: "", label: "Actual wake up time" },
+      { num: "2 x thanks for turning up", unit: "", label: "Medals" },
     ],
   },
 
